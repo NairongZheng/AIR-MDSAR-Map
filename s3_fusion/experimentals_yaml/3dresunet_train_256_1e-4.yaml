@@ -1,0 +1,49 @@
+CUDNN:
+  BENCHMARK: true
+  DETERMINISTIC: false
+  ENABLED: true
+
+OUTPUT_DIR: '/emwuser/znr/code/hyper_sar/outputs/20220522_3d_resunet_epoch200_lr1e-4'
+LOG_DIR: '/emwuser/znr/code/hyper_sar/outputs/20220522_3d_resunet_epoch200_lr1e-4/tensorboard'
+WORKERS: 4
+PRINT_FREQ: 10
+
+DATASET:
+  DATASET: hyper_sar
+  TRAIN_IMAGE_ROOT: '/emwuser/znr/data/hyper_sar/img_train_256'
+  TRAIN_LABEL_ROOT: '/emwuser/znr/data/hyper_sar/lab_train_256'
+  TEST_IMAGE_ROOT: '/emwuser/znr/data/hyper_sar/test/img'
+  TEST_LABEL_ROOT: '/emwuser/znr/data/hyper_sar/test/lab'
+  NUM_CLASSES: 9
+
+
+LOSS:
+  USE_OHEM: False
+  OHEMTHRES: 0.9
+  OHEMKEEP: 65536  # 131072
+
+TRAIN:
+  IMAGE_SIZE:
+  - 256
+  - 256
+  BASE_SIZE: 256
+  BATCH_SIZE_PER_GPU: 4
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 200
+  RESUME: false
+  OPTIMIZER: sgd
+  LR: 0.0001
+  WD: 0.0005
+  MOMENTUM: 0.9
+  NESTEROV: false
+  FLIP: true
+  MULTI_SCALE: False ############ 多尺度训练
+  DOWNSAMPLERATE: 1
+  IGNORE_LABEL: 255
+  SCALE_FACTOR: 16
+  EXTRA: 
+    LABEL_MAPPING: {0: [0, 0, 255], 1: [139, 0, 0], 2: [83, 134, 139], 
+                3:[255, 0, 0], 4:[0, 255, 0], 5:[205, 173, 0], 
+                6:[139, 105, 20], 7:[178, 34, 34], 8:[0, 139, 139], 
+                255:[255, 255, 255]}

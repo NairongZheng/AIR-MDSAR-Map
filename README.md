@@ -44,5 +44,15 @@ You can stitch the small patches back to the original size, refer to [code](http
 
 Generating train and test data: [python code](https://github.com/NairongZheng/utils/blob/main/generate_test_dataset.py), [matlab code](https://github.com/NairongZheng/utils/blob/main/generate_test_dataset_x.m).
 
+Cutting images to patches: [code](https://github.com/NairongZheng/utils/blob/main/cutting_images_2.py).
+
 ### Single band classification
+
+Single band classification: [code](https://github.com/NairongZheng/AIR-MDSAR-Map/tree/main/s2_yyjf).
+
+### Fusion classification
+
+1. Priori fusion: [code](https://github.com/NairongZheng/utils/blob/main/results_fusion.py)
+2. Model fusion: [code](https://github.com/NairongZheng/AIR-MDSAR-Map/tree/main/s2_yyjf)
+3. Feature fusion: [code]()
 
