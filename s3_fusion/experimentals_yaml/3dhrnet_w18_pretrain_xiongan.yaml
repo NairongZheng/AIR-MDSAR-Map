@@ -1,0 +1,107 @@
+CUDNN:
+  BENCHMARK: true
+  DETERMINISTIC: false
+  ENABLED: true
+
+OUTPUT_DIR: '/emwuser/znr/code/hyper_sar/outputs/pretrain_xiongan'
+LOG_DIR: '/emwuser/znr/code/hyper_sar/outputs/pretrain_xiongan/tensorboard'
+WORKERS: 4
+PRINT_FREQ: 10
+
+DATASET:
+  DATASET: xiongan
+  TRAIN_IMAGE_ROOT: '/emwuser/znr/data/xiongan/img_256'
+  TRAIN_LABEL_ROOT: '/emwuser/znr/data/xiongan/lab_256'
+  TEST_IMAGE_ROOT: '/emwuser/znr/data/xiongan/img_test'
+  TEST_LABEL_ROOT: '/emwuser/znr/data/xiongan/lab_test'
+  NUM_CLASSES: 20
+  NUM_BAND: 256   # 多光谱的波段数
+
+MODEL:
+  NAME: hrnet
+  PRETRAINED: ''
+  EXTRA:
+    FINAL_CONV_KERNEL: 1
+    STAGE1:
+      NUM_MODULES: 1
+      NUM_RANCHES: 1
+      BLOCK: BOTTLENECK
+      NUM_BLOCKS:
+      - 4
+      NUM_CHANNELS:
+      - 64
+      FUSE_METHOD: SUM
+    STAGE2:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 2
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 18
+      - 36
+      FUSE_METHOD: SUM
+    STAGE3:
+      NUM_MODULES: 4
+      NUM_BRANCHES: 3
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 18
+      - 36
+      - 72
+      FUSE_METHOD: SUM
+    STAGE4:
+      NUM_MODULES: 3
+      NUM_BRANCHES: 4
+      BLOCK: BASIC
+      NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+      - 4
+      NUM_CHANNELS:
+      - 18
+      - 36
+      - 72
+      - 144
+      FUSE_METHOD: SUM
+
+LOSS:
+  USE_OHEM: False
+  OHEMTHRES: 0.9
+  OHEMKEEP: 65536  # 131072
+
+TRAIN:
+  MODEL: 'hrnet_3d'   # hrnet_3d/resunet_3d
+  IMAGE_SIZE:
+  - 256
+  - 256
+  BASE_SIZE: 256
+  BATCH_SIZE_PER_GPU: 4
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 500
+  RESUME: false
+  OPTIMIZER: sgd
+  LR: 0.01
+  WD: 0.0005
+  MOMENTUM: 0.9
+  NESTEROV: false
+  FLIP: true
+  MULTI_SCALE: true ############ 多尺度训练
+  DOWNSAMPLERATE: 1
+  IGNORE_LABEL: 255
+  SCALE_FACTOR: 16
+  EXTRA: 
+    LABEL_MAPPING: {0:[0, 0, 0], 1:[255, 127, 80], 2:[0, 74, 0], 
+                3:[0, 0, 255], 4:[255, 255, 0], 5:[0, 255, 255], 
+                6:[189, 41, 181], 7:[139, 139, 0], 8:[0, 158, 0], 
+                9:[145, 0, 148], 10:[222, 184, 135], 11:[218, 140, 214], 
+                12:[139, 0, 0], 13:[0, 255, 0], 14:[255, 182, 193], 
+                15:[205, 0, 0], 16:[46, 139, 87], 17:[0, 0, 139], 
+                18:[255, 165, 0], 19:[85, 26, 139]}
