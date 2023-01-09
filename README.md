@@ -8,22 +8,22 @@
 ### SAR and optical images
 In order to facilitate training, the white edge of the original image is changed to black edge: 
 
-- Extracting the position of white edge: [code](https://github.com/NairongZheng/utils/blob/main/find_edge.py)
-- changing white edge to black: [python code](https://github.com/NairongZheng/utils/blob/main/delete_edge.py), [matlab code](https://github.com/NairongZheng/utils/blob/main/delete_edge.m)
+- Extracting the position of white edge: [code](https://github.com/NairongZheng/utils/blob/main/find_edge.py).
+- changing white edge to black: [python code](https://github.com/NairongZheng/utils/blob/main/delete_edge.py), [matlab code](https://github.com/NairongZheng/utils/blob/main/delete_edge.m).
 
-You can also view the distribution of intensity values for each channel of the images: [code](https://github.com/NairongZheng/utils/blob/main/plot_histogram.py)
+You can also view the distribution of intensity values for each channel of the images: [code](https://github.com/NairongZheng/utils/blob/main/plot_histogram.py).
 
 ### Label generating
 
-labels are generated manually using matlab, secondary labeling can refer to: [code](https://github.com/NairongZheng/utils/blob/main/imageLabel_change_path.m)
+labels are generated manually using matlab, secondary labeling can refer to: [code](https://github.com/NairongZheng/utils/blob/main/imageLabel_change_path.m).
 
-Semi-automatic annotation algorithm: [paper](https://link.springer.com/chapter/10.1007/978-981-19-8202-6_9)
+Semi-automatic annotation algorithm: [paper](https://link.springer.com/chapter/10.1007/978-981-19-8202-6_9).
 
-converting the labels to RGB images: [code](https://github.com/NairongZheng/utils/blob/main/changelabel_123_imageLabeler.py)
+converting the labels to RGB images: [code](https://github.com/NairongZheng/utils/blob/main/changelabel_123_imageLabeler.py).
 
-Calculating the proportion of categories in labels: [code](https://github.com/NairongZheng/utils/blob/main/plot_pie.py)
+Calculating the proportion of categories in labels: [code](https://github.com/NairongZheng/utils/blob/main/plot_pie.py).
 
-Overlap the label with the image to check the accuracy of the annotation: [code](https://github.com/NairongZheng/utils/blob/main/image_with_mask.py)
+Overlap the label with the image to check the accuracy of the annotation: [code](https://github.com/NairongZheng/utils/blob/main/image_with_mask.py).
 
 ### Generating AIR-MDSAR-Map
 
@@ -37,5 +37,12 @@ You can stitch the small patches back to the original size, refer to [code](http
 
 ## Classical algorithm verification
 
-1. [UNet](https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28), [SegNet](https://ieeexplore.ieee.org/document/7803544), [DeeplabV3p](https://link.springer.com/chapter/10.1007/978-3-030-01234-2_49), and [HRNet](https://ieeexplore.ieee.org/document/9052469) are used for the validation of AIR-MDSAR-Map: [code]()
-2. 
+1. [UNet](https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28), [SegNet](https://ieeexplore.ieee.org/document/7803544), [DeeplabV3p](https://link.springer.com/chapter/10.1007/978-3-030-01234-2_49), and [HRNet](https://ieeexplore.ieee.org/document/9052469) are used for the validation of AIR-MDSAR-Map: [code(Tensorflow)](https://github.com/NairongZheng/AIR-MDSAR-Map/tree/main/s1_classical), other algorithms can refer to [paper](https://www.spiedigitallibrary.org/journals/journal-of-applied-remote-sensing/volume-16/issue-1/014520/Land-cover-classification-of-synthetic-aperture-radar-images-based-on/10.1117/1.JRS.16.014520.short).
+2. Evaluation index calculation can be referred to [code](https://github.com/NairongZheng/utils/blob/main/cal_ConfusionMatrix_indicators_2.py).
+
+## Land cover classification
+
+Generating train and test data: [python code](https://github.com/NairongZheng/utils/blob/main/generate_test_dataset.py), [matlab code](https://github.com/NairongZheng/utils/blob/main/generate_test_dataset_x.m).
+
+### Single band classification
+
