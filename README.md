@@ -52,7 +52,7 @@ Single band classification: [code](https://github.com/NairongZheng/AIR-MDSAR-Map
 
 ### (2) Fusion classification
 
-1. Priori fusion: [code](https://github.com/NairongZheng/utils/blob/main/results_fusion.py)
-2. Model fusion: [code](https://github.com/NairongZheng/AIR-MDSAR-Map/tree/main/s2_yyjf)
-3. Feature fusion: [code](https://github.com/NairongZheng/AIR-MDSAR-Map/tree/main/s3_fusion)
+1. Priori fusion: [code](https://github.com/NairongZheng/utils/blob/main/results_fusion.py).
+2. Model fusion: [code](https://github.com/NairongZheng/AIR-MDSAR-Map/tree/main/s2_yyjf).
+3. Feature fusion: [code](https://github.com/NairongZheng/AIR-MDSAR-Map/tree/main/s3_fusion).
 
